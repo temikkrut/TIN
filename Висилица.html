@@ -1,0 +1,103 @@
+<!DOCTYPE html >
+<html>
+	<head>
+	<meta charset="UTF-8">
+		<title>Висилица</title>
+	<body>
+		<script>
+			var words = [
+			"программа",
+			"макака",
+			"прекрасный",
+			"оладушек",
+			"тюфюк",
+			"дом",
+			"ток",
+			"комната",
+			"вокзал",
+			"рюкзак",
+			"зуб",
+			"параллелепипед",
+			"параллелограмм",
+			"жизнь",
+			"бомба",
+			"супер",
+			"ландыш",
+			"курица",
+			"мама",
+			"папа",
+			"рот"
+			];
+			
+			
+			var word = words[Math.floor(Math.random()*words.length)];
+			
+			var er = false;
+			var erro = false;
+			
+			var answerArray = [];
+			for (var i = 0; i < word.length; i++){
+				answerArray[i] = "_";
+			}
+			
+			var kolpopitok = 10;
+			
+			remainingLetters = word.length;
+			
+			while (remainingLetters > 0) {
+				alert(answerArray.join(" "));
+				 
+				if (kolpopitok > 0) { var guess = prompt("Угадайте букву, или нажмите Отмена для выхода из игры."); }
+				if (guess === null) {
+					break;
+				} else if (guess.length !== 1) {
+					alert("Пожалуйста, введите одну букву.");
+				} for (var d = 0; d <= answerArray.length; d++){
+					if (answerArray[d] === guess) {
+					er = true;
+					}
+					}
+					if (er) {
+						alert("Эта буква уже была. Пожалуйста, введите другую букву.");
+						er = false;
+				}   for (var x = 0; x <= 10; x++){
+					if (word[x] !== guess){
+						erro = true;
+					}
+					else {
+						erro = false;
+					}
+					if (erro === false) {
+						break;
+					}
+					if (guess === null || guess.length !== 1) {
+						erro = false;
+					}
+					}
+					if (erro) {
+					kolpopitok--;
+					alert("Неправильно! Осталось " + kolpopitok);
+				}
+				if (guess !== null && guess.length === 1) { 
+					if (kolpopitok > 0){
+							for (var j = 0; j < word.length; j++){
+								if (word[j] === guess) {
+									answerArray[j] = guess;
+									remainingLetters--;
+								}
+						    }
+				   }
+			    }
+				if (kolpopitok <= 0) { break; }
+				erro = false;
+			}	
+			alert(answerArray.join(" "));
+			if (kolpopitok > 0) {
+				alert("Отлично! Было загадано слово " + word + ".");
+			}
+			if (kolpopitok <= 0) {
+				alert("Ты приграл. Было загадано слово " + word + ".");
+			}
+		</script>
+	</body>
+</html>
